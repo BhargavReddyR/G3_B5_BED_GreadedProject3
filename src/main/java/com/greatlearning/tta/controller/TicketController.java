@@ -53,7 +53,6 @@ public class TicketController {
 		model.addAttribute("ticket", ticketService.getTicketById(id));
 		return "edit_ticket";
 	}
-   
    @PostMapping("/tickets/{id}")
 	public String editTicket(
 			@PathVariable Long id, @ModelAttribute("ticket") Ticket ticket, 
@@ -70,6 +69,27 @@ public class TicketController {
 		ticketService.editTicket(existingTicket);
 		return "redirect:/tickets";
 	}	
+   
+   @GetMapping("/tickets/{id}/view")
+	public String viewTicketForm(
+			@PathVariable Long id, Model model) {
+		model.addAttribute("ticket", ticketService.getTicketById(id));
+		return "view_ticket";
+	}
+
+   @PostMapping("/tickets/{id}/")
+	public String viewTicket(
+			@PathVariable Long id, @ModelAttribute("ticket") Ticket ticket, 
+			Model model) {
+
+		// get ticket from database by id
+	   Ticket existingTicket = ticketService.getTicketById(id);
+		existingTicket.setId(id);
+		existingTicket.setTitle(ticket.getTitle());
+		existingTicket.setShortDiscription(ticket.getShortDiscription());
+		existingTicket.setCreatedOn(ticket.getCreatedOn());
+		return "redirect:/tickets";
+	}	
 
    
    @GetMapping("/tickets/{id}")
@@ -77,5 +97,6 @@ public class TicketController {
 		   @PathVariable Long id) {
        ticketService.deleteTicketById(id);
        return "redirect:/tickets";
-   }
+	}
+ 
 }

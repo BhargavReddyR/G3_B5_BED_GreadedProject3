@@ -36,11 +36,17 @@ public class TicketServiceImpl implements TicketService{
     @Override
     public Ticket editTicket(Ticket ticket) {
         return ticketRepository.save(ticket);
+       
+    }
+    @Override
+    public Ticket viewTicket(Long id) {
+        return ticketRepository.findById(id).get();
     }
     
     public void deleteTicketById(Long id) {
         ticketRepository.deleteById(id);
     }
+    
 
    
 }
