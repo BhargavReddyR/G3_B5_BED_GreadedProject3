@@ -34,11 +34,11 @@
                   
    
      <td>
-    	<form th:action = "@{/tickets/search}" method="GET">
 	   <input type="search" id="gsearch" name="gsearch">
-	   <input type="submit" class="btn btn-primary">
+	   <a
+	   class="btn btn-primary">
 	    Search
-	    </form>
+	     </a>
   </td>
 						
 					   
@@ -73,7 +73,7 @@
 							class="btn btn-danger">
 							Delete
 						</a> 
-						<a th:href="@{/tickets/view/{id}(id=${ticket.id})}"
+						<a th:href="@{/tickets/view(id=${ticket.id})}"
 							class="btn btn-info">
 							View
 						</a> 

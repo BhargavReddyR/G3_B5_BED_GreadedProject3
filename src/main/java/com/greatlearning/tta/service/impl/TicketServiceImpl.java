@@ -46,6 +46,12 @@ public class TicketServiceImpl implements TicketService{
     public void deleteTicketById(Long id) {
         ticketRepository.deleteById(id);
     }
+
+	@Override
+	public List<Ticket> getTicketsbyTitleAndShortDesc(String searchString) {
+		
+		 return ticketRepository.findByTitleOrShortDiscription(searchString,searchString);
+	}
     
 
    

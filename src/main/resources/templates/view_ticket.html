@@ -36,55 +36,25 @@
             <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card ">
                 <h1 class = "text-center"style="background-color:#E5E8E8;"> View Ticket </h1>
                 <div class = "card-body">
-                    <form th:action="@{/tickets/{id} (id=${ticket.id})}" th:object = "${ticket}" method="POST">
-                        <div class ="form-group">
-                            <label> Title </label>
-                            <input
-                            type = "text"
-                            name = "title"
-                            th:field = "*{title}"
-                            class = "form-control"
-                            placeholder="Enter ticket title"
-                            />
-                        </div>
-                       
-                        <div class ="form-group">
-                            <label> Short Discription </label>
-                            <input
-                            type = "text"
-                            name = "shortDiscription"
-                            th:field = "*{shortDiscription}"
-                            class = "form-control"
-                            placeholder="Enter ticket discription"
-                            />
-                        </div>
-                       
-                        <div class ="form-group">
-                            <label> Content </label>
-                            <input
-                            type = "text"
-                            name = "createdOn"
-                            th:field = "*{createdOn}"
-                            class = "form-control"
-                            placeholder="Enter Content"
-                            />
-                        </div>
-                       
-                        <div class = "box-footer">
-                            <button type="submit" class = "btn btn-primary">
-                                Back
-                            </button>
-                        </div>
-                    </form>
-               
-                    <hr>
-                    <a th:href="@{/tickets}">Back to Tickets Listing</a>
-
+					<div class ="card-body" th:each="ticket:${tickets}">
+					<h3><span>Ticket ID</span> </h3>
+					<span th:text="${ticket.id}"></span> <hr>
+					<h3>Ticket Title</h3>
+					<span th:text="${ticket.title}"></span> <hr>
+					<h3>Short Description</h3>
+					<span th:text="${ticket.shortDiscription}"></span> <hr>
+					
+					</div>
+					  <a th:href="@{/tickets}"
+							class="btn btn-info">
+							Back
+						</a> 
+					 </div>
+					 <a th:href="@{/tickets}">Back to Tickets Listing</a>
 
                 </div>
             </div>
         </div>
-    </div>
     <footer>
   <nav class="navbar navbar-fixed-bottom-sm bg-light justify-content-center">
   <a class="nav-link disabled" href="#">Copyright @ 2023 Greatlearning All right reserved</a>

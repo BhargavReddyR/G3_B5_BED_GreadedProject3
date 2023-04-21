@@ -17,5 +17,6 @@ public interface TicketService {
 	Ticket viewTicket(Long id);
 
 	void deleteTicketById(Long id);
+	List<Ticket>getTicketsbyTitleAndShortDesc (String searchString);
 	
 }

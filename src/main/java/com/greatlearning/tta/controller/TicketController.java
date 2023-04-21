@@ -1,14 +1,18 @@
 package com.greatlearning.tta.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.greatlearning.tta.service.TicketService;
 import com.greatlearning.tta.entity.Ticket;
+import com.greatlearning.tta.service.TicketService;
 
 
 @Controller
@@ -70,10 +74,12 @@ public class TicketController {
 		return "redirect:/tickets";
 	}	
    
-   @GetMapping("/tickets/{id}/view")
+   @GetMapping("/tickets/view/{id}")
 	public String viewTicketForm(
 			@PathVariable Long id, Model model) {
-		model.addAttribute("ticket", ticketService.getTicketById(id));
+	   List<Ticket> tickets = new ArrayList<Ticket>();
+	   tickets.add(ticketService.getTicketById(id));
+		model.addAttribute("tickets", tickets);
 		return "view_ticket";
 	}
 
@@ -98,5 +104,15 @@ public class TicketController {
        ticketService.deleteTicketById(id);
        return "redirect:/tickets";
 	}
+   @GetMapping("/tickets/search")
+   public String searchTicket(@RequestParam("gsearch") String param, Model model) {
+	   
+	   List<Ticket> tickets =ticketService.getTicketsbyTitleAndShortDesc(param);
+	   System.out.println(tickets);
+	   model.addAttribute("tickets", tickets);
+	  
+	   return "tickets";
+	
+	} 
  
 }
