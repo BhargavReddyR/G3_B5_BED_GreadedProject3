@@ -8,7 +8,7 @@ import com.greatlearning.tta.entity.Ticket;
 
 public interface TicketRepository extends JpaRepository<Ticket, Long>{
 	
-	List<Ticket> findByTitleOrShortDiscription(String searchString, String searchString2);
+	List<Ticket> findByTitleOrShortDescription(String searchString, String searchString2);
 	
 
 }

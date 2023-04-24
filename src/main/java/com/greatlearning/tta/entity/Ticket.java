@@ -1,5 +1,9 @@
 package com.greatlearning.tta.entity;
 
+import java.sql.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -17,21 +21,26 @@ public class Ticket {
 	    private String title;
 
 
-	    @Column(name = "Short_Discription")
-	    private String shortDiscription;
+	    @Column(name = "Short_Description")
+	    private String shortDescription;
+	    
+	    @CreationTimestamp
+	    @Column(name = "createdOn")
+	    private Date createdOn;
 
 
-	    @Column(name = "Created_On")
-	    private String createdOn;
+	    @Column(name = "Content")
+	    private String content;
 
 
 	    public Ticket() {
 
 	    }
 
-		public Ticket(Long id, String title, String shortDiscription, String createdOn) {
+		public Ticket(Long id, String title, String shortDescription, Date createdOn, String content) {
 			this.title = title;
-			this.shortDiscription = shortDiscription;
+			this.shortDescription = shortDescription;
+			this.content = content;
 			this.createdOn = createdOn;
 		}
 
@@ -51,19 +60,27 @@ public class Ticket {
 			this.title = title;
 		}
 
-		public String getShortDiscription() {
-			return shortDiscription;
+		public String getShortDescription() {
+			return shortDescription;
 		}
 
-		public void setShortDiscription(String shortDiscription) {
-			this.shortDiscription = shortDiscription;
+		public void setShortDescription(String shortDescription) {
+			this.shortDescription = shortDescription;
 		}
 
-		public String getCreatedOn() {
+		public String getContent() {
+			return content;
+		}
+
+		public void setContent(String content) {
+			this.content = content;
+		}
+
+		public Date getCreatedOn() {
 			return createdOn;
 		}
 
-		public void setCreatedOn(String createdOn) {
+		public void setCreatedOn(Date createdOn) {
 			this.createdOn = createdOn;
 		}
 }

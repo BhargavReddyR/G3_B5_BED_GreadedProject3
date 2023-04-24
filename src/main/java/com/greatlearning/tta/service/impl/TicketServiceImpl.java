@@ -50,7 +50,7 @@ public class TicketServiceImpl implements TicketService{
 	@Override
 	public List<Ticket> getTicketsbyTitleAndShortDesc(String searchString) {
 		
-		 return ticketRepository.findByTitleOrShortDiscription(searchString,searchString);
+		 return ticketRepository.findByTitleOrShortDescription(searchString,searchString);
 	}
     
 

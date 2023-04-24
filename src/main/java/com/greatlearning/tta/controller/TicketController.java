@@ -66,8 +66,8 @@ public class TicketController {
 	   Ticket existingTicket = ticketService.getTicketById(id);
 		existingTicket.setId(id);
 		existingTicket.setTitle(ticket.getTitle());
-		existingTicket.setShortDiscription(ticket.getShortDiscription());
-		existingTicket.setCreatedOn(ticket.getCreatedOn());
+		existingTicket.setShortDescription(ticket.getShortDescription());
+		existingTicket.setContent(ticket.getContent());
 
 		// save edit ticket object
 		ticketService.editTicket(existingTicket);
@@ -92,8 +92,8 @@ public class TicketController {
 	   Ticket existingTicket = ticketService.getTicketById(id);
 		existingTicket.setId(id);
 		existingTicket.setTitle(ticket.getTitle());
-		existingTicket.setShortDiscription(ticket.getShortDiscription());
-		existingTicket.setCreatedOn(ticket.getCreatedOn());
+		existingTicket.setShortDescription(ticket.getShortDescription());
+		existingTicket.setContent(ticket.getContent());
 		return "redirect:/tickets";
 	}	
 

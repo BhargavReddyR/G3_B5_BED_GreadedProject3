@@ -58,7 +58,7 @@
                 <tr>
 					<th>#</th>
                     <th>Ticket Title</th>
-                    <th>Ticket Short Discription</th>
+                    <th>Ticket Short Description</th>
                     <th>Ticket Created on</th>
                     <th>Actions</th>
                 </tr>
@@ -69,7 +69,7 @@
                 <tr th:each="ticket: ${tickets}">
 					<td th:text="${ticket.id}"></td>
                     <td th:text="${ticket.title}"></td>
-                    <td th:text="${ticket.shortDiscription}"></td>
+                    <td th:text="${ticket.shortDescription}"></td>
                     <td th:text="${ticket.createdOn}"></td>
                     <td>
 						<a th:href="@{/tickets/{id}/edit(id=${ticket.id})}"
